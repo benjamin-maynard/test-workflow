@@ -24,3 +24,7 @@ jobs:
         with:
           repository: ${{ steps.get-pr-info.outputs.PRHEAD }}
           ref: ${{ steps.get-pr-info.outputs.PRSHA }}
+      -
+        name: Comment on PR
+        run: |
+          curl -X POST -H "Accept: application/vnd.github.v3+json" --H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/benjamin-maynard/test-workflow/issues/1/comments -d '{"body":"body"}'
