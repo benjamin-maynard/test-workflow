@@ -14,8 +14,8 @@ jobs:
         id: get-pr-info
         run: |
           PRINFO=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/benjamin-maynard/kubernetes-cloud-mysql-backup/pulls/${{ github.event.inputs.prID }})
-          PRHEAD=$(echo $PRINFO |  | jq -r .head.repo.full_name)
-          PRSHA=$(echo $PRINFO |  | jq -r .head.sha)
+          PRHEAD=$(echo $PRINFO | jq -r .head.repo.full_name)
+          PRSHA=$(echo $PRINFO | jq -r .head.sha)
           echo "::set-output name=PRHEAD::$PRHEAD"
           echo "::set-output name=PRSHA::$PRSHA"
       -
